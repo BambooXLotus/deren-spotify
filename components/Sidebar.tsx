@@ -1,12 +1,5 @@
-import {
-	HeartIcon,
-	HomeIcon,
-	LibraryIcon,
-	LogoutIcon,
-	PlusCircleIcon,
-	RssIcon,
-	SearchIcon,
-} from '@heroicons/react/outline';
+import { HomeIcon, LibraryIcon, LogoutIcon, PlusCircleIcon, RssIcon, SearchIcon } from '@heroicons/react/outline';
+import { HeartIcon } from '@heroicons/react/solid';
 import { signOut, useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
@@ -21,8 +14,6 @@ const Sidebar = () => {
 	const [playlists, setPlaylists] = useState([]);
 	const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
-	console.log('You picked playlist >>>> ', playlistId);
-
 	useEffect(() => {
 		if (spotifyApi.getAccessToken()) {
 			spotifyApi.getUserPlaylists().then((data) => {
@@ -34,7 +25,7 @@ const Sidebar = () => {
 	return (
 		<div
 			className='text-gray-500 p-5 text-xs lg:text-sm  border-right border-gray-900 overflow-y-scroll scrollbar-hide h-screen
-    sm:max-w-[12] lg:max-w-[15rem] hidden md:inline-flex'
+    sm:max-w-[12] lg:max-w-[15rem] hidden md:inline-flex pb-36'
 		>
 			<div className='space-y-4'>
 				<button
@@ -65,11 +56,11 @@ const Sidebar = () => {
 					<p>Create Playlist</p>
 				</button>
 				<button className='flex items-center space-x-2 hover:text-white'>
-					<HeartIcon className='h-5 w-5' />
+					<HeartIcon className='h-5 w-5 text-blue-500' />
 					<p>Liked Songs</p>
 				</button>
 				<button className='flex items-center space-x-2 hover:text-white'>
-					<RssIcon className='h-5 w-5' />
+					<RssIcon className='h-5 w-5 text-green-500' />
 					<p>Episodes</p>
 				</button>
 				<hr className='border-top-{0.1px} border-gray-900' />
